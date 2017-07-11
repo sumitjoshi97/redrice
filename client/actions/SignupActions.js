@@ -1,5 +1,7 @@
+import axios from 'axios';
+
 export function userSignupRequest(userData) {
     return dispatch => {
-        return WebAuthnExtensions.post
+        return axios.post('/api/users' , {user: this.state});
     }
 }
