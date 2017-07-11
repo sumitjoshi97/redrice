@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
     "express": "^4.15.3",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
@@ -28,7 +30,8 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.7.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "validator": "^8.0.0"
   },
   "repository": "https://github.com/sumitjoshi97/redrice"
 }

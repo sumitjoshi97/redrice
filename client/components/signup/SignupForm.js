@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import timezones from '../../data/timezones.js';
 import map from 'lodash/map';
 import axios from 'axios';
+import classnames from 'classnames';
 
 class SignupForm extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class SignupForm extends Component {
             email: '',
             password: '',
             passwordConfirmation: '',
-            timezone: ''
+            timezone: '',
+            errors: {}
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,20 +27,25 @@ class SignupForm extends Component {
     }
 
     onSubmit(e) {
+        this.setState({ errors: {} });
         e.preventDefault();
-        this.props.userSignupRequest(this.state);
+        this.props.userSignupRequest(this.state).then(
+            () => { },
+            ({ data }) => this.setState({ errors: data })
+        );
         //axios.post('/api/users' , {user: this.state});
     }
 
     render() {
-        const options = map(timezones,(val, key) => 
-           <option key={val} value={val}>{key}</option>
+        const errors = this.state;
+        const options = map(timezones, (val, key) =>
+            <option key={val} value={val}>{key}</option>
         );
 
         return (
             <form onSubmit={this.onSubmit}>
                 <h1>Join our Community</h1>
-                <div className="form-group">
+                <div className={classnames("form-group", {'has-error':errors.username})} >
                     <label className="control-label">Username</label>
                     <input
                         type="text"
@@ -46,6 +53,7 @@ class SignupForm extends Component {
                         className="form-control"
                         onChange={this.handleChange}
                     />
+                    {errors.username && <span classsName="help-block">{errors.username}</span>}
                 </div>
                 <div className="form-group">
                     <label className="control-label">Email</label>
@@ -99,7 +107,7 @@ class SignupForm extends Component {
 
 SignupForm.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired
-} 
+}
 
 
 export default SignupForm;
