@@ -4,14 +4,16 @@ import webpack from 'webpack';
 export default {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'webpack-hot-middleware',
+        'webpack-hot-middleware/client',
         path.join(__dirname, '/client/index.js'),
     
-    ],output: {
+    ],
+    output: {
         path: '/',
         publicPath: '/',
         filename: 'bundle.js'
-    },plugins: [
+    },
+    plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin()
@@ -21,11 +23,9 @@ export default {
             {
                 test: /\.js?$/,
                 include: path.join(__dirname, 'client'),
-                loaders: ['babel-loader', 'react-hot-loader']
+                exclude: /(node_modules)/,
+                loaders: ['react-hot-loader', 'babel-loader']
             }
         ]
-    },
-    resolve: {
-        extensions: ['.','.js']
     }
 }

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import NavigationBar from './NavigationBar';
+import Main from './Main';
 
 class App extends Component {
-    state = {  }
+
     render() {
         return (
-            <h1>asdasd</h1>
+            <div className="container">
+                <NavigationBar />
+                <Main />
+                
+            </div>
         );
     }
 }

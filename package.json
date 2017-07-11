@@ -19,9 +19,16 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.3",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   },
   "repository": "https://github.com/sumitjoshi97/redrice"
 }
