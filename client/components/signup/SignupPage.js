@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import SignupForm from './SignupForm';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../../actions/SignupActions';
+
 class SignupPage extends Component {
     //  state = {  }
     render() {
-        const userSignupRequest = this.props;
+        const userSignupRequest = this.props.userSignupRequest;
         return (
             <div className="row">
                 <div className="col-md-4 col-md-offset-4">
