@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TextFieldGroup from '../common/TextFieldGroup';
-
+import propTypes from 'prop-types';
 import timezones from '../../data/timezones.js';
 import map from 'lodash/map';
 import classNames from 'classnames';
@@ -41,7 +41,9 @@ class SignupForm extends Component {
         if (this.isValid()) {
             this.setState({ errors: {} });
             this.props.userSignupRequest(this.state).then(
-                () => { }).
+                () => {
+                    this.context.history.push('/')
+                 }).
                 catch((err) => { this.setState({ errors: err.response.data.errors }) }
                 )
         }
@@ -119,5 +121,7 @@ SignupForm.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired
 }
 
-
+SignupForm.contextTypes= {
+    router: React.PropTypes.object.isRequired
+}
 export default SignupForm;
